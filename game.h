@@ -26,6 +26,7 @@ public:
     const QString PATH_TO_FRUIT_PIXMAP;
     const float ITERATION_VALUE;
     const float DELAY;
+    const QSize TILE_SIZE;
     float m_deltaTime;
 };
 

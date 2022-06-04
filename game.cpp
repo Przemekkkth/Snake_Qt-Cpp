@@ -8,6 +8,7 @@ Game::Game() :
     PATH_TO_HEAD_PIXMAP(":/images/head.png"),
     PATH_TO_FRUIT_PIXMAP(":/images/fruit.png"),
     ITERATION_VALUE(1000.0f/60.0f), DELAY(200.0f),
+    TILE_SIZE(QSize(16,16)),
     m_deltaTime(0.0f)
 {
     srand(time(0));

@@ -118,7 +118,11 @@ void GameScene::update()
         }
     }
 
-    for (int i = 0; i < m_game.num; i++)
+    QGraphicsPixmapItem *headItemPixmap = new QGraphicsPixmapItem(m_headPixmap.copy(m_game.dir * m_game.TILE_SIZE.width(), 0, m_game.TILE_SIZE.width(), m_game.TILE_SIZE.height()));
+    headItemPixmap->setPos(m_game.s[0].x * m_game.size, m_game.s[0].y * m_game.size);
+    addItem(headItemPixmap);
+
+    for (int i = 1; i < m_game.num; i++)
     {
         QGraphicsPixmapItem *tailItemPixmap = new QGraphicsPixmapItem(m_tailPixmap);
         tailItemPixmap->setPos(m_game.s[i].x * m_game.size, m_game.s[i].y * m_game.size);
