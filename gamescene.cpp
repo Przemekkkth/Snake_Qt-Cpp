@@ -96,6 +96,24 @@ void GameScene::loadPixmap()
     {
         qDebug() << "FruitPixmap is not loaded successfully";
     }
+
+    if(m_pauseBgPixmap.load(m_game.PATH_TO_PAUSE_BG_PIXMAP))
+    {
+        qDebug() << "PauseBgPixmap is loaded successfully";
+    }
+    else
+    {
+        qDebug() << "PauseBgPixmap is not loaded successfully";
+    }
+
+    if(m_gameOverPixmap.load(m_game.PATH_TO_GAME_OVER_BG_PIXMAP))
+    {
+        qDebug() << "GameOverBgPixmap is loaded successfully";
+    }
+    else
+    {
+        qDebug() << "GameOverBgPixmap is not loaded successfully";
+    }
 }
 
 void GameScene::update()

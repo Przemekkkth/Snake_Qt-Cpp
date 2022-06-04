@@ -7,6 +7,8 @@ Game::Game() :
     PATH_TO_TAIL_PIXMAP(":/images/tail.png"),
     PATH_TO_HEAD_PIXMAP(":/images/head.png"),
     PATH_TO_FRUIT_PIXMAP(":/images/fruit.png"),
+    PATH_TO_PAUSE_BG_PIXMAP(":/images/bg_pause.png"),
+    PATH_TO_GAME_OVER_BG_PIXMAP(":/images/bg_gameover.png"),
     ITERATION_VALUE(1000.0f/60.0f), DELAY(200.0f), ORIGINAL_DELAY(200.0f),
     TILE_SIZE(QSize(16,16)),
     m_deltaTime(0.0f),
@@ -43,8 +45,22 @@ void Game::Tick()
         DELAY -= 2;
     }
 
-    if (s[0].x>N) s[0].x=0;  if (s[0].x<0) s[0].x=N;
-    if (s[0].y>M) s[0].y=0;  if (s[0].y<0) s[0].y=M;
+    if (s[0].x>N)
+    {
+        s[0].x=0;
+    }
+    if (s[0].x<0)
+    {
+        s[0].x=N;
+    }
+    if (s[0].y>M)
+    {
+        s[0].y=0;
+    }
+    if (s[0].y<0)
+    {
+        s[0].y=M;
+    }
 
     for (int i=1;i<num;i++)
         if (s[0].x==s[i].x && s[0].y==s[i].y)  num=i;

@@ -4,5 +4,7 @@
         <file>images/tail.png</file>
         <file>images/fruit.png</file>
         <file>images/head.png</file>
+        <file>images/bg_pause.png</file>
+        <file>images/bg_gameover.png</file>
     </qresource>
 </RCC>

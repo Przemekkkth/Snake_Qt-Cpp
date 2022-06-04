@@ -24,6 +24,9 @@ public:
     const QString PATH_TO_TAIL_PIXMAP;
     const QString PATH_TO_HEAD_PIXMAP;
     const QString PATH_TO_FRUIT_PIXMAP;
+    const QString PATH_TO_PAUSE_BG_PIXMAP;
+    const QString PATH_TO_GAME_OVER_BG_PIXMAP;
+
     const float ITERATION_VALUE;
     float DELAY;
     const float ORIGINAL_DELAY;

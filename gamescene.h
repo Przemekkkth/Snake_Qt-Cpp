@@ -20,6 +20,7 @@ private:
     Game m_game;
 
     QPixmap m_headPixmap, m_tailPixmap, m_emptyPixmap, m_fruitPixmap;
+    QPixmap m_pauseBgPixmap, m_gameOverPixmap;
     QTimer* m_timer;
     // QGraphicsScene interface
 protected:
