@@ -22,22 +22,34 @@ void GameScene::keyPressEvent(QKeyEvent* event)
         {
         case Qt::Key_Left:
         {
-            m_game.dir = 1;
+            if(m_game.dir != 2)
+            {
+                m_game.dir = 1;
+            }
         }
             break;
         case Qt::Key_Right:
         {
-            m_game.dir = 2;
+            if(m_game.dir != 1)
+            {
+                m_game.dir = 2;
+            }
         }
             break;
         case Qt::Key_Up:
         {
-            m_game.dir = 3;
+            if(m_game.dir != 0)
+            {
+                m_game.dir = 3;
+            }
         }
             break;
         case Qt::Key_Down:
         {
-            m_game.dir = 0;
+            if(m_game.dir != 3)
+            {
+                m_game.dir = 0;
+            }
         }
             break;
         }
@@ -47,9 +59,32 @@ void GameScene::keyPressEvent(QKeyEvent* event)
 
 void GameScene::loadPixmap()
 {
-    Q_ASSERT(m_greenPixmap.load(m_game.PATH_TO_GREEN_PIXMAP));
-    Q_ASSERT(m_redPixmap.load(m_game.PATH_TO_RED_PIXMAP));
-    Q_ASSERT(m_whitePixmap.load(m_game.PATH_TO_WHITE_PIXMAP));
+    if(m_greenPixmap.load(m_game.PATH_TO_GREEN_PIXMAP))
+    {
+        qDebug() << "GreenPixmap is loaded successfully";
+    }
+    else
+    {
+        qDebug() << "GreenPixmap is not loaded successfully";
+    }
+
+    if(m_redPixmap.load(m_game.PATH_TO_RED_PIXMAP))
+    {
+        qDebug() << "RedPixmap is loaded successfully";
+    }
+    else
+    {
+        qDebug() << "GreenPixmap is not loaded successfully";
+    }
+
+    if(m_whitePixmap.load(m_game.PATH_TO_WHITE_PIXMAP))
+    {
+        qDebug() << "WhitePixmap is loaded successfully";
+    }
+    else
+    {
+        qDebug() << "GreenPixmap is not loaded successfully";
+    }
 }
 
 void GameScene::update()
@@ -72,7 +107,7 @@ void GameScene::update()
         }
     }
 
-    for (int i= 0; i < m_game.num; i++)
+    for (int i = 0; i < m_game.num; i++)
     {
         QGraphicsPixmapItem *redItemPixmap = new QGraphicsPixmapItem(m_redPixmap);
         redItemPixmap->setPos(m_game.s[i].x * m_game.size, m_game.s[i].y * m_game.size);
