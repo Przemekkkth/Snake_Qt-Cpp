@@ -7,9 +7,10 @@ Game::Game() :
     PATH_TO_TAIL_PIXMAP(":/images/tail.png"),
     PATH_TO_HEAD_PIXMAP(":/images/head.png"),
     PATH_TO_FRUIT_PIXMAP(":/images/fruit.png"),
-    ITERATION_VALUE(1000.0f/60.0f), DELAY(200.0f),
+    ITERATION_VALUE(1000.0f/60.0f), DELAY(200.0f), ORIGINAL_DELAY(200.0f),
     TILE_SIZE(QSize(16,16)),
-    m_deltaTime(0.0f)
+    m_deltaTime(0.0f),
+    m_score(0)
 {
     srand(time(0));
     for(int i = 0; i < 100; ++i)
@@ -33,12 +34,13 @@ void Game::Tick()
     if (dir==2) s[0].x+=1;
     if (dir==3) s[0].y-=1;
 
-    qDebug() << "s[0].x " << s[0].x << " s[0].y " << s[0].y;
     if ((s[0].x==(f.x/size)) && (s[0].y == (f.y/size)))
     {
         num++;
         f.x=rand() % N * size;
         f.y=rand() % M * size;
+        m_score += 2;
+        DELAY -= 2;
     }
 
     if (s[0].x>N) s[0].x=0;  if (s[0].x<0) s[0].x=N;

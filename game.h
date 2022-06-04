@@ -25,9 +25,11 @@ public:
     const QString PATH_TO_HEAD_PIXMAP;
     const QString PATH_TO_FRUIT_PIXMAP;
     const float ITERATION_VALUE;
-    const float DELAY;
+    float DELAY;
+    const float ORIGINAL_DELAY;
     const QSize TILE_SIZE;
     float m_deltaTime;
+    int m_score;
 };
 
 #endif // GAME_H
