@@ -19,9 +19,11 @@ public:
     Fruct f;
     Snake s[100];
     int dir,num;
-    const QString PATH_TO_GREEN_PIXMAP;
-    const QString PATH_TO_RED_PIXMAP;
-    const QString PATH_TO_WHITE_PIXMAP;
+
+    const QString PATH_TO_EMPTY_PIXMAP;
+    const QString PATH_TO_TAIL_PIXMAP;
+    const QString PATH_TO_HEAD_PIXMAP;
+    const QString PATH_TO_FRUIT_PIXMAP;
     const float ITERATION_VALUE;
     const float DELAY;
     float m_deltaTime;

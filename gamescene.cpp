@@ -10,6 +10,7 @@ GameScene::GameScene(QObject *parent)
     loadPixmap();
     m_game.f.x = 0;
     m_game.f.y = 64;
+    m_game.Tick();
     connect(m_timer, &QTimer::timeout, this, &GameScene::update);
     m_timer->start(m_game.ITERATION_VALUE);
 }
@@ -59,31 +60,41 @@ void GameScene::keyPressEvent(QKeyEvent* event)
 
 void GameScene::loadPixmap()
 {
-    if(m_greenPixmap.load(m_game.PATH_TO_GREEN_PIXMAP))
+
+    if(m_headPixmap.load(m_game.PATH_TO_HEAD_PIXMAP))
     {
-        qDebug() << "GreenPixmap is loaded successfully";
+        qDebug() << "HeadPixmap is loaded successfully";
     }
     else
     {
-        qDebug() << "GreenPixmap is not loaded successfully";
+        qDebug() << "HeadPixmap is not loaded successfully";
     }
 
-    if(m_redPixmap.load(m_game.PATH_TO_RED_PIXMAP))
+    if(m_tailPixmap.load(m_game.PATH_TO_TAIL_PIXMAP))
     {
-        qDebug() << "RedPixmap is loaded successfully";
+        qDebug() << "TailPixmap is loaded successfully";
     }
     else
     {
-        qDebug() << "GreenPixmap is not loaded successfully";
+        qDebug() << "TailPixmap is not loaded successfully";
     }
 
-    if(m_whitePixmap.load(m_game.PATH_TO_WHITE_PIXMAP))
+    if(m_emptyPixmap.load(m_game.PATH_TO_EMPTY_PIXMAP))
     {
-        qDebug() << "WhitePixmap is loaded successfully";
+        qDebug() << "EmptyPixmap is loaded successfully";
     }
     else
     {
-        qDebug() << "GreenPixmap is not loaded successfully";
+        qDebug() << "EmptyPixmap is not loaded successfully";
+    }
+
+    if(m_fruitPixmap.load(m_game.PATH_TO_FRUIT_PIXMAP))
+    {
+        qDebug() << "FruitPixmap is loaded successfully";
+    }
+    else
+    {
+        qDebug() << "FruitPixmap is not loaded successfully";
     }
 }
 
@@ -101,20 +112,20 @@ void GameScene::update()
     {
         for (int j = 0; j < m_game.M; j++)
         {
-            QGraphicsPixmapItem *whiteItemPixmap = new QGraphicsPixmapItem(m_whitePixmap);
-            whiteItemPixmap->setPos(i*m_game.size, j*m_game.size);
-            addItem(whiteItemPixmap);
+            QGraphicsPixmapItem *emptyItemPixmap = new QGraphicsPixmapItem(m_emptyPixmap);
+            emptyItemPixmap->setPos(i*m_game.size, j*m_game.size);
+            addItem(emptyItemPixmap);
         }
     }
 
     for (int i = 0; i < m_game.num; i++)
     {
-        QGraphicsPixmapItem *redItemPixmap = new QGraphicsPixmapItem(m_redPixmap);
-        redItemPixmap->setPos(m_game.s[i].x * m_game.size, m_game.s[i].y * m_game.size);
-        addItem(redItemPixmap);
+        QGraphicsPixmapItem *tailItemPixmap = new QGraphicsPixmapItem(m_tailPixmap);
+        tailItemPixmap->setPos(m_game.s[i].x * m_game.size, m_game.s[i].y * m_game.size);
+        addItem(tailItemPixmap);
     }
 
-    QGraphicsPixmapItem *greenPixmapItem = new QGraphicsPixmapItem(m_greenPixmap);
-    greenPixmapItem->setPos(m_game.f.x, m_game.f.y);
-    addItem(greenPixmapItem);
+    QGraphicsPixmapItem *fruitPixmapItem = new QGraphicsPixmapItem(m_fruitPixmap);
+    fruitPixmapItem->setPos(m_game.f.x, m_game.f.y);
+    addItem(fruitPixmapItem);
 }

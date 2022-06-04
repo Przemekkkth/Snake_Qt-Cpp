@@ -3,5 +3,9 @@
         <file>images/red.png</file>
         <file>images/white.png</file>
         <file>images/green.png</file>
+        <file>images/empty.png</file>
+        <file>images/tail.png</file>
+        <file>images/fruit.png</file>
+        <file>images/head.png</file>
     </qresource>
 </RCC>

@@ -3,11 +3,19 @@
 Game::Game() :
     N(30), M(20),
     size(16), RESOLUTION(QSize(size*N, size*M)), dir(0), num(4),
-    PATH_TO_GREEN_PIXMAP(":/images/green.png"), PATH_TO_RED_PIXMAP(":/images/red.png"),
-    PATH_TO_WHITE_PIXMAP(":/images/white.png"), ITERATION_VALUE(1000.0f/60.0f), DELAY(200.0f),
+    PATH_TO_EMPTY_PIXMAP(":/images/empty.png"),
+    PATH_TO_TAIL_PIXMAP(":/images/tail.png"),
+    PATH_TO_HEAD_PIXMAP(":/images/head.png"),
+    PATH_TO_FRUIT_PIXMAP(":/images/fruit.png"),
+    ITERATION_VALUE(1000.0f/60.0f), DELAY(200.0f),
     m_deltaTime(0.0f)
 {
     srand(time(0));
+    for(int i = 0; i < 100; ++i)
+    {
+        s[i].x = 0;
+        s[i].y = 0;
+    }
 }
 
 void Game::Tick()

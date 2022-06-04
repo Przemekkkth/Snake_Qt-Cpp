@@ -18,7 +18,8 @@ private slots:
 private:
     void loadPixmap();
     Game m_game;
-    QPixmap m_greenPixmap, m_redPixmap, m_whitePixmap;
+
+    QPixmap m_headPixmap, m_tailPixmap, m_emptyPixmap, m_fruitPixmap;
     QTimer* m_timer;
     // QGraphicsScene interface
 protected:
