@@ -23,7 +23,7 @@ void GameScene::keyPressEvent(QKeyEvent* event)
         {
         case Qt::Key_Left:
         {
-            if(m_game.dir != 2)
+            if(m_game.dir != 2 && m_game.m_state == Game::State::Active)
             {
                 m_game.dir = 1;
             }
@@ -31,7 +31,7 @@ void GameScene::keyPressEvent(QKeyEvent* event)
             break;
         case Qt::Key_Right:
         {
-            if(m_game.dir != 1)
+            if(m_game.dir != 1 && m_game.m_state == Game::State::Active)
             {
                 m_game.dir = 2;
             }
@@ -39,7 +39,7 @@ void GameScene::keyPressEvent(QKeyEvent* event)
             break;
         case Qt::Key_Up:
         {
-            if(m_game.dir != 0)
+            if(m_game.dir != 0 && m_game.m_state == Game::State::Active)
             {
                 m_game.dir = 3;
             }
@@ -47,9 +47,21 @@ void GameScene::keyPressEvent(QKeyEvent* event)
             break;
         case Qt::Key_Down:
         {
-            if(m_game.dir != 3)
+            if(m_game.dir != 3 && m_game.m_state == Game::State::Active)
             {
                 m_game.dir = 0;
+            }
+        }
+            break;
+        case Qt::Key_P:
+        {
+            if(m_game.m_state == Game::State::Active)
+            {
+                m_game.m_state = Game::State::Pause;
+            }
+            else if(m_game.m_state == Game::State::Pause)
+            {
+                m_game.m_state = Game::State::Active;
             }
         }
             break;
@@ -118,14 +130,17 @@ void GameScene::loadPixmap()
 
 void GameScene::update()
 {
-
     clear();
-    m_game.m_deltaTime += m_game.ITERATION_VALUE;
-    if(m_game.m_deltaTime > m_game.DELAY)
+    if(m_game.m_state == Game::State::Active)
     {
-        m_game.m_deltaTime = 0.0f;
-        m_game.Tick();
+        m_game.m_deltaTime += m_game.ITERATION_VALUE;
+        if(m_game.m_deltaTime > m_game.DELAY)
+        {
+            m_game.m_deltaTime = 0.0f;
+            m_game.Tick();
+        }
     }
+
     for (int i = 0; i < m_game.N; i++)
     {
         for (int j = 0; j < m_game.M; j++)
@@ -150,4 +165,10 @@ void GameScene::update()
     QGraphicsPixmapItem *fruitPixmapItem = new QGraphicsPixmapItem(m_fruitPixmap);
     fruitPixmapItem->setPos(m_game.f.x, m_game.f.y);
     addItem(fruitPixmapItem);
+
+    if(m_game.m_state == Game::State::Pause)
+    {
+        QGraphicsPixmapItem *pauseBgPixmapItem = new QGraphicsPixmapItem(m_pauseBgPixmap.scaled(m_game.RESOLUTION.width(), m_game.RESOLUTION.height()));
+        addItem(pauseBgPixmapItem);
+    }
 }

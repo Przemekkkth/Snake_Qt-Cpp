@@ -33,6 +33,12 @@ public:
     const QSize TILE_SIZE;
     float m_deltaTime;
     int m_score;
+
+    enum class State
+    {
+        Active, Pause, GameOver
+    };
+    State m_state;
 };
 
 #endif // GAME_H

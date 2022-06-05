@@ -12,7 +12,8 @@ Game::Game() :
     ITERATION_VALUE(1000.0f/60.0f), DELAY(200.0f), ORIGINAL_DELAY(200.0f),
     TILE_SIZE(QSize(16,16)),
     m_deltaTime(0.0f),
-    m_score(0)
+    m_score(0),
+    m_state(State::Active)
 {
     srand(time(0));
     for(int i = 0; i < 100; ++i)
@@ -63,5 +64,12 @@ void Game::Tick()
     }
 
     for (int i=1;i<num;i++)
-        if (s[0].x==s[i].x && s[0].y==s[i].y)  num=i;
+    {
+        if (s[0].x == s[i].x && s[0].y == s[i].y)
+        {
+            qDebug() << "Game Over";
+            num=i;
+        }
+    }
+
 }
