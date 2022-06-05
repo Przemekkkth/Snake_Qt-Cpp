@@ -17,6 +17,7 @@ private slots:
 
 private:
     void loadPixmap();
+    void renderScene();
     Game m_game;
 
     QPixmap m_headPixmap, m_tailPixmap, m_emptyPixmap, m_fruitPixmap;

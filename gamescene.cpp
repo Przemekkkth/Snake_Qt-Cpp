@@ -2,6 +2,8 @@
 #include <QKeyEvent>
 #include <QTimer>
 #include <QGraphicsPixmapItem>
+#include <QPainter>
+#include <QDir>
 
 GameScene::GameScene(QObject *parent)
     : QGraphicsScene{parent}, m_game(), m_timer(new QTimer(this))
@@ -73,6 +75,11 @@ void GameScene::keyPressEvent(QKeyEvent* event)
             }
         }
             break;
+        case Qt::Key_Z:
+        {
+            //renderScene(); //uncomment if want to make screenshots
+        }
+            break;
         }
 
     }
@@ -135,6 +142,19 @@ void GameScene::loadPixmap()
     {
         qDebug() << "GameOverBgPixmap is not loaded successfully";
     }
+}
+
+void GameScene::renderScene()
+{
+    static int index = 0;
+    QString fileName = QDir::currentPath() + QDir::separator() + "screen" + QString::number(index++) + ".png";
+    QRect rect = sceneRect().toAlignedRect();
+    QImage image(rect.size(), QImage::Format_ARGB32);
+    image.fill(Qt::transparent);
+    QPainter painter(&image);
+    render(&painter);
+    image.save(fileName);
+    qDebug() << "saved " << fileName;
 }
 
 void GameScene::update()
