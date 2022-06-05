@@ -67,8 +67,7 @@ void Game::Tick()
     {
         if (s[0].x == s[i].x && s[0].y == s[i].y)
         {
-            qDebug() << "Game Over";
-            num=i;
+            m_state = Game::State::GameOver;
         }
     }
 

@@ -171,4 +171,12 @@ void GameScene::update()
         QGraphicsPixmapItem *pauseBgPixmapItem = new QGraphicsPixmapItem(m_pauseBgPixmap.scaled(m_game.RESOLUTION.width(), m_game.RESOLUTION.height()));
         addItem(pauseBgPixmapItem);
     }
+    else if(m_game.m_state == Game::State::GameOver)
+    {
+        QGraphicsPixmapItem *headItemPixmap = new QGraphicsPixmapItem(m_headPixmap.copy(m_game.dir * m_game.TILE_SIZE.width(), 0, m_game.TILE_SIZE.width(), m_game.TILE_SIZE.height()));
+        headItemPixmap->setPos(m_game.s[0].x * m_game.size, m_game.s[0].y * m_game.size);
+        addItem(headItemPixmap);
+        QGraphicsPixmapItem *gameOverBgPixmapItem = new QGraphicsPixmapItem(m_gameOverPixmap.scaled(m_game.RESOLUTION.width(), m_game.RESOLUTION.height()));
+        addItem(gameOverBgPixmapItem);
+    }
 }
