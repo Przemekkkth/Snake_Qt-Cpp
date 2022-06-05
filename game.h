@@ -13,6 +13,7 @@ class Game
 public:
     Game();
     void Tick();
+    void Reset();
     const int N, M;
     const int size;
     QSize RESOLUTION;

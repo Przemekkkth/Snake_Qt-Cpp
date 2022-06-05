@@ -72,3 +72,26 @@ void Game::Tick()
     }
 
 }
+
+void Game::Reset()
+{
+     dir = 0;
+     num = 4;
+     DELAY = ORIGINAL_DELAY;
+     m_deltaTime = 0.0f;
+     m_score = 0;
+     m_state = Game::State::Active;
+     for(int i = 0; i < 100; ++i)
+     {
+         s[i].x = 0;
+         s[i].y = 0;
+     }
+     f.x = 0;
+     f.y = 64;
+     Tick();
+     for(int i = 0; i < 100; ++i)
+     {
+         s[i].x = 0;
+         s[i].y = 0;
+     }
+}

@@ -65,7 +65,16 @@ void GameScene::keyPressEvent(QKeyEvent* event)
             }
         }
             break;
+        case Qt::Key_R:
+        {
+            if(m_game.m_state == Game::State::GameOver)
+            {
+              m_game.Reset();
+            }
         }
+            break;
+        }
+
     }
     QGraphicsScene::keyPressEvent(event);
 }
