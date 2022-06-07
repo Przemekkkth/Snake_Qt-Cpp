@@ -1,4 +1,4 @@
-# Snake_Qt-Cpp
+# Snake Qt/C++
 Snake is a video game genre where the player maneuvers a growing line that becomes a primary obstacle to itself. The concept originated in the 1976 two-player arcade game Blockade from Gremlin Industries, and the ease of implementation has led to hundreds of versions (some of which have the word snake or worm in the title) for many platforms. 
 
 ## Screenshots
