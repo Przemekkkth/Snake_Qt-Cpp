@@ -14,6 +14,7 @@ GameScene::GameScene(QObject *parent)
     m_game.f.y = 64;
     m_game.Tick();
     connect(m_timer, &QTimer::timeout, this, &GameScene::update);
+    setBackgroundBrush(Qt::black);
     m_timer->start(m_game.ITERATION_VALUE);
 }
 
@@ -88,7 +89,6 @@ void GameScene::keyPressEvent(QKeyEvent* event)
 
 void GameScene::loadPixmap()
 {
-
     if(m_headPixmap.load(m_game.PATH_TO_HEAD_PIXMAP))
     {
         qDebug() << "HeadPixmap is loaded successfully";
@@ -163,9 +163,9 @@ void GameScene::update()
     if(m_game.m_state == Game::State::Active)
     {
         m_game.m_deltaTime += m_game.ITERATION_VALUE;
-        if(m_game.m_deltaTime > m_game.DELAY)
+        while(m_game.m_deltaTime > m_game.DELAY)
         {
-            m_game.m_deltaTime = 0.0f;
+            m_game.m_deltaTime -= m_game.DELAY;
             m_game.Tick();
         }
     }
