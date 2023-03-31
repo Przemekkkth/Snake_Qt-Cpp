@@ -22,4 +22,4 @@ qmake && make
 ## Addons
 * [Qt](https://www.qt.io/) - Cross-Platform software for embedded & desktop
 * [Video](https://youtu.be/QxxzeqEapiU) - gameplay
-* [Play online](https://przemekkkth.github.io/snake/index.html) - game hosted on GitHub
+* [Play online](https://przemekkkth.github.io/assets/games/snake/index.html) - game hosted on GitHub
